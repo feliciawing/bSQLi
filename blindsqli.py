@@ -8,6 +8,7 @@ from urllib.parse import quote_plus
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, 
 epilog = textwrap.dedent('''
 Example: blindsqli.py -u https://www.test.com/index.php?id=1
+         blindsqli.py -u https://www.test.com/index.php?id=1 -a
          blindsqli.py -u https://www.test.com/index.php?id=1 -d
          blindsqli.py -u https://www.test.com/index.php?id=1 -t -s 5
     '''))
@@ -94,7 +95,6 @@ def main():
   / _ )/ (_)__  ___/ / __/ __ \  / /  /  _/
  / _  / / / _ \/ _  /\ \/ /_/ / / /___/ /  
 /____/_/_/_//_/\_,_/___/\___\_\/____/___/  
-                                                                                                         
 """)
     print("[>] Url: " + f"{COLOR['YELLOW']}{args.url}{COLOR['ENDC']}\n")
     
