@@ -1,2 +1,2 @@
-# tbbSQLi
- Time-Based Blind SQL Injection
+# bSQLi
+ Blind SQL Injection
